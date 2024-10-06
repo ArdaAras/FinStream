@@ -1,6 +1,6 @@
 # This file generates random data 
 
-from definitions import customer_ids, transaction_types, account_types, currencies, merchants, transaction_statuses, fake_generator, random
+from Data.definitions import customer_ids, transaction_types, account_types, currencies, merchants, transaction_statuses, fake_generator, random
 
 def generate_financial_transaction(num_records: int = 10) -> list:
     """

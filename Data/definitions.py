@@ -9,7 +9,7 @@ def load_merchants() -> list:
     """
     Reads the merchants from a file and returns a list of merchants.
     """
-    with open('.\Dataset\merchants.txt', 'r') as file:
+    with open('.\Data\merchants.txt', 'r') as file:
         lines = file.readlines()
 
     # Remove newline characters
