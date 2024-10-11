@@ -1,6 +1,6 @@
 # This file generates random data 
 
-from Data.definitions import customer_ids, transaction_types, account_types, currencies, merchants, transaction_statuses, fake_generator, random
+from definitions import customer_ids, transaction_types, account_types, currencies, merchants, transaction_statuses, fake_generator, random
 
 def generate_financial_transaction(num_records: int = 10) -> list:
     """
@@ -24,7 +24,7 @@ def generate_financial_transaction(num_records: int = 10) -> list:
         day = transaction_date.day
         hour = transaction_date.hour
         minutes = transaction_date.minute
-        
+
         # Simulate negative amounts for debits and positive for credits
         if transaction_type in ['debit', 'withdrawal']:
             transaction_amount = abs(transaction_amount) * -1
