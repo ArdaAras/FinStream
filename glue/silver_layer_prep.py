@@ -19,15 +19,15 @@ df_cleaned_user_id = df_cleaned_na.filter(df_cleaned_na.customer_id >= 0)
 df_cleaned_transaction_type = df_cleaned_user_id \
     .filter(df_cleaned_user_id.transaction_type != 'invalid_type')
 
-# Remove 'unknown_currency' currency
+# Remove 'unknown_currency' currency
 df_cleaned_currency = df_cleaned_transaction_type \
     .filter(df_cleaned_transaction_type.currency != 'unknown_currency')
 
-# Remove records with out of range 'year', 'month', 'day'
+# Remove records with out of range 'year', 'month', 'day'
 df_cleaned_dates = df_cleaned_currency \
     .filter(df_cleaned_currency.year.between(2000, 2024)) \
     .filter(df_cleaned_currency.month.between(1, 12)) \
     .filter(df_cleaned_currency.day.between(1, 31))
 
-# Write to silver layer bucket as parquet partitioned by year and month
-df_cleaned_dates.write.mode("append").partitionBy("year", "month").parquet(silver_layer_bucket)
+# Write to silver layer bucket as parquet partitioned by year, month and day
+df_cleaned_dates.write.mode("append").partitionBy("year", "month", "day").parquet(silver_layer_bucket)
